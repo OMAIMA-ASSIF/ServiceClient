@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstApp">
         <activity
-            android:name=".activity_reclamation"
+            android:name=".ReclamationActivity"
             android:exported="false" />
         <activity
             android:name=".DashboardActivity"
