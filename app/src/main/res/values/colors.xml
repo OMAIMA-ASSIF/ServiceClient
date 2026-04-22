@@ -10,9 +10,9 @@
     <color name="dark">#57014B</color>
     <color name="text_secondary">#FADEF8</color>
     <color name="text_light">#FBBADE</color>
-    <color name="purple">#1717AB</color>
-    <color name="card_background">#F8F4F8</color>
-    <color name="primary1">#57014B</color>
+    <color name="purple">#180AD7</color>
+    <color name="card_background">#FFFCFF</color>
+    <color name="primary1">#180AD7</color>
     <color name="text_primary">#333333</color>
     <color name="text_primary1">#4D33CE</color>
     <color name="text_hint">#808080</color>

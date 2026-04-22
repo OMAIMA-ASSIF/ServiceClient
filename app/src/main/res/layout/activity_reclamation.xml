@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New alert"
-                android:textColor="@color/text_primary1"
+                android:textColor="@color/primary1"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp"/>
@@ -119,7 +119,7 @@
             android:id="@+id/txtListe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Liste des réclamations"
+            android:text="Your alerts"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"
