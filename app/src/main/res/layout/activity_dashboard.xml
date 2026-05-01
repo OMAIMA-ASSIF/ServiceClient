@@ -50,7 +50,7 @@
             android:src="@drawable/ic_profil"
             android:background="@drawable/circle_background"
             android:padding="4dp"
-            android:tint="@color/text_secondary"
+            app:tint="@color/text_secondary"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_facture"
-                        android:tint="@color/purple"
+                        app:tint="@color/purple"
                         android:contentDescription="@string/cd_solde" />
 
                     <TextView
@@ -135,7 +135,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_work"
-                        android:tint="@color/purple"
+                        app:tint="@color/purple"
                         android:contentDescription="@string/cd_solde" />
 
                     <TextView
@@ -174,7 +174,7 @@
                         android:layout_height="34dp"
                         android:contentDescription="@string/cd_solde"
                         android:src="@drawable/ic_alert"
-                        android:tint="@color/purple" />
+                        app:tint="@color/purple" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_place"
-                        android:tint="@color/purple"
+                        app:tint="@color/purple"
                         android:contentDescription="@string/cd_solde" />
 
                     <TextView

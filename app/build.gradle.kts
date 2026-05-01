@@ -4,16 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.myfirstapp"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.myfirstapp"
-        minSdk = 34
-        targetSdk = 36
+        minSdk = 26
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -36,6 +32,13 @@ android {
 }
 
 dependencies {
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // CE CI EST LE FIX POUR L'ERREUR "Metadata version 2.1.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

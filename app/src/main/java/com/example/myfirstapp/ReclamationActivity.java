@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import java.util.ArrayList;
 
@@ -23,34 +24,45 @@ public class ReclamationActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_reclamation);
 
-        EditText edtTitre = findViewById(R.id.edtTitre);
-        EditText edtDescription = findViewById(R.id.edtDescription);
+        EditText editTitle = findViewById(R.id.edtTitre);
+        EditText editDescription = findViewById(R.id.edtDescription);
         Button btnAjouter = findViewById(R.id.btnAjouter);
-
         RecyclerView recyclerView = findViewById(R.id.recyclerReclamations);
 
-        ArrayList<Reclamation> listeReclamations = new ArrayList<>();
-        listeReclamations.add(new Reclamation("Basement", "Parking cleaning"));
-        listeReclamations.add(new Reclamation("Apartment 12", "Water leak"));
-        listeReclamations.add(new Reclamation("Block B", "Elevator out of order"));
-        listeReclamations.add(new Reclamation("Hallway 2", "Lighting issue"));
-        listeReclamations.add(new Reclamation("Main entrance", "Broken door"));
-        listeReclamations.add(new Reclamation("Parking lot", "Non-functional camera"));
+        //initialisation of database
+        AppDataBase db = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDataBase.class,
+                "syndic_db").allowMainThreadQueries().build();
+
+        //get all reclamations from database
+        ArrayList<Reclamation> listeReclamations = new ArrayList<>(db.reclamationDao().getAll());
 
         ReclamationAdapter adapter = new ReclamationAdapter(listeReclamations);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
         btnAjouter.setOnClickListener(v -> {
-            String titre = edtTitre.getText().toString();
-            String description = edtDescription.getText().toString();
-            if(titre.isEmpty() || description.isEmpty()){
+            String title = editTitle.getText().toString();
+            String description = editDescription.getText().toString();
+
+            if(title.isEmpty() || description.isEmpty()){
                 Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show();
-            }else{
-                listeReclamations.add(new Reclamation(description, titre));
+            } else {
+                Reclamation reclamation = new Reclamation(title, description);
+                db.reclamationDao().add(reclamation);
+
+                //downloading the alerts
+                listeReclamations.clear();
+                listeReclamations.addAll(db.reclamationDao().getAll());
+
                 adapter.notifyDataSetChanged();
-                edtTitre.setText("");
-                edtDescription.setText("");
+
+                editTitle.setText("");
+                editDescription.setText("");
+
+                recyclerView.scrollToPosition(listeReclamations.size() - 1);
+
                 Toast.makeText(this, "New alert added", Toast.LENGTH_SHORT).show();
             }
         });
